@@ -12,6 +12,6 @@ COPY .env /app/
 
 EXPOSE 8080
 
-ENV NAME ChatBotOpenAI
+ENV NAME PDFChatBotApp
 
-CMD ["python", "app.py"]
+CMD ["streamlit", "run", "app.py"]
