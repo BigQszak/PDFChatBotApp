@@ -44,11 +44,11 @@ Replace your_openai_api_key with your actual OpenAI API key.
 ### 4. Build and Run the Docker Container
 
 ```sh
-docker build -t pdf-chat-bot-app .
-docker run -d -p 8080:8080 --env-file .env pdf-chat-bot-app
+docker build -t streamlitapp .
+docker run -p 8501:8501 streamlitapp
 ```
 
-The application will be available at http://localhost:8080.
+The application will be available at http://localhost:8501
 
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
