@@ -33,17 +33,19 @@ cd PDFChatBotApp
 echo. > .env
 ```
 
-Open the .env file in your preferred text editor and add your OpenAI API key: 
+Open the .env file in your preferred text editor and add your OpenAI API key:
 
+```
 OPENAI_API_KEY=your_openai_api_key
+```
 
 Replace your_openai_api_key with your actual OpenAI API key.
 
 ### 4. Build and Run the Docker Container
 
 ```sh
-docker build -t chat-bot-app .
-docker run -d -p 8080:8080 --env-file .env chat-bot-app
+docker build -t pdf-chat-bot-app .
+docker run -d -p 8080:8080 --env-file .env pdf-chat-bot-app
 ```
 
 The application will be available at http://localhost:8080.
