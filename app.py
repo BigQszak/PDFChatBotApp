@@ -102,22 +102,33 @@ class ChatBotApp:
         question = st.text_input("Ask questions about the documents:")
         if question:
             response = self.conversation_manager.handle_user_input(question)
-            self.display_chat_history(response)
+            if "error" in response:
+                st.error(response["error"])
+            else:
+                self.display_chat_history(response)
 
         with st.sidebar:
             st.subheader("Your documents")
             pdf_documents = st.file_uploader(
                 "Upload your documents", accept_multiple_files=True
             )
+
             if st.button("Submit your documents"):
                 with st.spinner("Your documents are being processed..."):
-                    raw_text = self.pdf_processor.get_pdf_text(pdf_documents)
-                    text_chunks = self.text_chunker.get_text_chunks(raw_text)
-                    vectorstore = self.vectorstore_manager.get_vectorstore(text_chunks)
-                    conversation_chain = (
-                        self.conversation_manager.get_conversation_chain(vectorstore)
-                    )
-                    st.session_state.conversation = conversation_chain
+                    try:
+                        raw_text = self.pdf_processor.get_pdf_text(pdf_documents)
+                        text_chunks = self.text_chunker.get_text_chunks(raw_text)
+                        vectorstore = self.vectorstore_manager.get_vectorstore(
+                            text_chunks
+                        )
+                        conversation_chain = (
+                            self.conversation_manager.get_conversation_chain(
+                                vectorstore
+                            )
+                        )
+                        st.session_state.conversation = conversation_chain
+                    except ValueError as ve:
+                        st.error(str(ve))
 
 
 def main():

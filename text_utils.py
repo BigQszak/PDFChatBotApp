@@ -32,6 +32,10 @@ class PDFHandler:
             str: The raw text extracted from the provided PDF documents.
 
         """
+        if not pdf_docs:
+            raise ValueError(
+                "No PDF documents provided. Please submit documents from your computer."
+            )
         raw_text_chunks = []
         for pdf_document in pdf_docs:
             pdf_reader = PdfReader(pdf_document)
@@ -47,7 +51,7 @@ class TextSplitter:
         get_text_chunks(self, raw_text: str)
     """
 
-    def __init__(self, chunk_size: int = 1000, chunk_overlap: int = 200) -> None:
+    def __init__(self, chunk_size: int = 1500, chunk_overlap: int = 200) -> None:
         """
         Initializes a new instance of the TextSplitter class with the specified chunk size and overlap.
 
