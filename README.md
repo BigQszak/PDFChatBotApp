@@ -13,7 +13,7 @@ Before you begin, ensure you have the following installed on your machine:
 
 ### 1. Download Dockerfile to your local machine
 
-Download provided Dockerfile 
+Download provided Dockerfile and navigate to the directory with the file.
 
 ### 2. Build and Run the Docker container
 
