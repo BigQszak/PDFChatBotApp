@@ -20,7 +20,7 @@ Download provided Dockerfile and navigate to the directory with the file.
 Run these commands in your terminal.
 
 ```sh
-docker build --build-arg OPENAI_API_KEY={your_actual_openai_api_key} -t {name_of_your_image} .
+docker build --build-arg OPENAI_API_KEY={your_actual_openai_api_key} --no-cache -t {name_of_your_image} .
 docker run -d -p 8501:8501 {name_of_your_image} 
 ```
 Replace {your_actual_openai_api_key} with your own OpenAI API key and {name_of_your_image} with the name of your choice
